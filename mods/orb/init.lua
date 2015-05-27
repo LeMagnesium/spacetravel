@@ -93,8 +93,10 @@ orb.fs = {
          local path = "/" .. table.concat(resource_path, "/") ..
             "/resources/" .. content_path
          local file = io.open(path, "r")
-         orb.fs.find(f, "/" .. dir)[base] = file:read("*all")
-         file:close()
+         if file then
+             orb.fs.find(f, "/" .. dir)[base] = file:read("*all")
+             file:close()
+         end
       end
       return f
    end,
