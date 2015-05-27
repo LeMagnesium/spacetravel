@@ -40,5 +40,9 @@ See Todo.md and below for Todolist.
 
 Textures from Calandria (steel, light): [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/)
 Sky textures from [Moontest](https://github.com/Amaz1/moontest).
+Textures from Ataron : [CC BY-NC-SA 2.0](https://creativecommons.org/licenses/by-nc-sa/2.0/) :
+    - default_wall.png
+    - default_affichage.png
+    - heart.png
 
 Code: GPLv3
