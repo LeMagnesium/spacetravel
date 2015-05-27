@@ -1,4 +1,4 @@
-# Space
+# Space Travel
 
 This is a game that uses the [MineTest engine](http://www.minetest.net).
 Its story happens in space. You're alone. You have to find meteors to settle, and
