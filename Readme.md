@@ -44,5 +44,6 @@ Textures from Ataron : [CC BY-NC-SA 2.0](https://creativecommons.org/licenses/by
     - default_wall.png
     - default_affichage.png
     - heart.png
+    - all : default_venus_ground_---.png
 
 Code: GPLv3
