@@ -52,37 +52,32 @@ minetest.register_node("default:tritanium", {
 
 -- 3. Miscellaneous
 
+local function pop_up_platform(pos)
+    default.find_and_replace(pos, 3, "air", "default:platform_border")
+    minetest.after(7, default.find_and_replace, pos, 3,
+    "default:platform_border", "air")
+end
+
 minetest.register_node("default:platform", {
     description = "Platform",
-    tiles = {"default_light.png"},
-    groups = {oddly_breakable_by_hand = 2},
-    after_place_node = function(pos)
-        local function find_and_replace(pos, radius, tofind, replacement)
-            local dx, dz
-            for dx = -radius, radius do
-                for dz = -radius, radius do
-                    pos.x = pos.x + dx
-                    pos.z = pos.z + dz
-                    if minetest.get_node(pos).name == tofind then
-                        minetest.add_node(pos, {name = replacement})
-                    end
-                    pos.z = pos.z - dz
-                    pos.x = pos.x - dx
-                end
-            end
-        end
-        find_and_replace(pos, 3, "air", "default:platform_border")
-        minetest.after(7, find_and_replace, pos, 3, "default:platform_border",
-            "air")
-    end,
-    on_punch = function(pos)
-        minetest.registered_nodes["default:platform"].after_place_node(pos)
-    end,
+    tiles = {"default_platform_top.png",    -- +Y
+             "default_platform_top.png",    -- -Y
+             "default_platform_side.png"},  -- +X/-X/+Z/-Z
+    groups = {oddly_breakable_by_hand = 2, mesecon = 2},
+    after_place_node = pop_up_platform,
+    on_punch = pop_up_platform,
+    mesecons = {
+        effector = {
+            action_on = pop_up_platform
+        }
+    }
 })
 
 minetest.register_node("default:platform_border", {
-    description = "You shouldn't get this :p",
-    tiles = {"default_steel.png"},
+    description = "You shouldn't get this :p (default:platform_border)",
+    tiles = {"default_platform_border_top.png",
+             "default_platform_border_top.png",
+             "default_platform_side.png"},
     groups = {oddly_breakable_by_hand = 2},
     drop = ""
 })
