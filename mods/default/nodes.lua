@@ -52,23 +52,65 @@ minetest.register_node("default:tritanium", {
 
 -- 3. Miscellaneous
 
-local function pop_up_platform(pos)
-    default.find_and_replace(pos, 3, "air", "default:platform_border")
-    minetest.after(7, default.find_and_replace, pos, 3,
+local function pop_up_xz_platform(pos)
+    default.find_and_replace(pos, 3, 0, 3, "air", "default:platform_border")
+    minetest.after(7, default.find_and_replace, pos, 3, 0, 3,
+    "default:platform_border", "air")
+end
+
+local function pop_up_xy_platform(pos)
+    default.find_and_replace(pos, 3, 3, 0, "air", "default:platform_border")
+    minetest.after(7, default.find_and_replace, pos, 3, 3, 0,
+    "default:platform_border", "air")
+end
+
+local function pop_up_yz_platform(pos)
+    default.find_and_replace(pos, 0, 3, 3, "air", "default:platform_border")
+    minetest.after(7, default.find_and_replace, pos, 0, 3, 3,
     "default:platform_border", "air")
 end
 
 minetest.register_node("default:platform", {
-    description = "Platform",
+    description = "Temporary Platform (y)",
     tiles = {"default_platform_top.png",    -- +Y
              "default_platform_top.png",    -- -Y
              "default_platform_side.png"},  -- +X/-X/+Z/-Z
     groups = {oddly_breakable_by_hand = 2, mesecon = 2},
-    after_place_node = pop_up_platform,
-    on_punch = pop_up_platform,
+    after_place_node = pop_up_xz_platform,
+    on_punch = pop_up_xz_platform,
     mesecons = {
         effector = {
-            action_on = pop_up_platform
+            action_on = pop_up_xz_platform
+        }
+    }
+})
+
+minetest.register_node("default:temporary_wall_z", {
+    description = "Temporary Wall (z)",
+    tiles = {"default_platform_top.png",    -- +Y
+             "default_platform_top.png",    -- -Y
+             "default_platform_side.png"},  -- +X/-X/+Z/-Z
+    groups = {oddly_breakable_by_hand = 2, mesecon = 2},
+    after_place_node = pop_up_yz_platform,
+    on_punch = pop_up_yz_platform,
+    mesecons = {
+        effector = {
+            action_on = pop_up_yz_platform
+        }
+    }
+})
+
+minetest.register_node("default:temporary_wall_x", {
+    description = "temporary Wall (x)",
+    tiles = {"default_platform_top.png",    -- +Y
+             "default_platform_top.png",    -- -Y
+             "default_platform_side.png"},  -- +X/-X/+Z/-Z
+    groups = {oddly_breakable_by_hand = 2, mesecon = 2},
+    after_place_node = pop_up_yz_platform,
+    on_punch = pop_up_yz_platform,
+    mesecons = {
+        effector = {
+            action_on = pop_up_yz_platform
         }
     }
 })
@@ -78,8 +120,34 @@ minetest.register_node("default:platform_border", {
     tiles = {"default_platform_border_top.png",
              "default_platform_border_top.png",
              "default_platform_side.png"},
-    groups = {oddly_breakable_by_hand = 2},
+    groups = {oddly_breakable_by_hand = 2, not_in_creative_inventory = 1},
     drop = ""
+})
+
+local function on_diffuser_punch(pos)
+    minetest.after(5, default.find_and_replace, pos, math.random(5, 10),
+        math.random(5, 10), math.random(5, 10), "air", "default:amber")
+end
+
+minetest.register_node("default:amber_diffuser", {
+    description = "Amber sarcophagus bomb",
+    tiles = {"default_light.png"},
+    groups = {oddly_breakable_by_hand = 2, mesecon = 2},
+    on_punch = on_diffuser_punch,
+    mesecons = {
+        effecter = {
+            action_on = on_diffuser_punch
+        }
+    },
+})
+
+minetest.register_node("default:amber", {
+    description = "Amber block",
+    --drawtype = "liquid",
+    tiles = {"default_amber.png"},
+    paramtype = "light",
+    post_effect_color = {a = 150, r = 230, g = 137, b = 9},
+    alpha = 120,
 })
 
 -- x. Unsorted
