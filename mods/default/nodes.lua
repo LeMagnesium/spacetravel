@@ -143,8 +143,9 @@ minetest.register_node("default:amber_diffuser", {
 
 minetest.register_node("default:amber", {
     description = "Amber block",
-    --drawtype = "liquid",
+    drawtype = "glasslike",
     tiles = {"default_amber.png"},
+    use_texture_alpha = true,
     paramtype = "light",
     post_effect_color = {a = 150, r = 230, g = 137, b = 9},
     alpha = 120,
