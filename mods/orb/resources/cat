@@ -1,6 +1,0 @@
--- -*- lua -*-
-
-local f, env, args = ...
-for _,file in pairs(args) do
-   print(orb.find(f, file, env))
-end
