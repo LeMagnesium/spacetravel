@@ -131,9 +131,14 @@ end
 
 minetest.register_node("default:amber_diffuser", {
     description = "Amber sarcophagus bomb",
+    drawtype = "mesh",
+    mesh = "default_amber_bomb.obj",
     tiles = {"default_light.png"},
+    paramtype = "light",
+    paramtype2 = "facedir",
+    visual_scale = 0.75,
     groups = {oddly_breakable_by_hand = 2, mesecon = 2},
-    on_punch = on_diffuser_punch,
+    on_rightclick = on_diffuser_punch,
     mesecons = {
         effecter = {
             action_on = on_diffuser_punch
