@@ -125,8 +125,9 @@ minetest.register_node("default:platform_border", {
 })
 
 local function on_diffuser_punch(pos)
-    minetest.after(5, default.find_and_replace, pos, math.random(5, 10),
-        math.random(5, 10), math.random(5, 10), "air", "default:amber")
+	minetest.after(5, default.find_and_replace, pos, math.random(5, 10),
+        	math.random(5, 10), math.random(5, 10), "air", "default:amber")
+	minetest.remove_node(pos)
 end
 
 minetest.register_node("default:amber_diffuser", {
@@ -204,3 +205,23 @@ minetest.register_node("default:light", {
     groups = {cracky = 3, oddly_breakable_by_hand = 3},
     light_source = 14,
 })
+
+-- Planets
+
+minetest.register_node("default:asteroid_core", {
+	description = "Core of a asteroid",
+	tiles = {"default_asteroid_core.png"},
+	groups = {cracky = 2, planet = 1},
+})
+
+minetest.register_node("default:asteroid_surface", {
+	description = "Surface of an asteroid",
+	tiles = {"default_asteroid_surface.png"},
+	groups = {choppy = 3},
+})
+
+minetest.register_node("default:asteroid", {
+	description = "Asteroid",
+	tiles = {"default_asteroid.png"},
+})
+
