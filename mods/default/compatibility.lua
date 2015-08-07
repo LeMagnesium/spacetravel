@@ -25,6 +25,6 @@ end
 -- Nodes
 minetest.register_node("default:mese",{
     description = "Mese Block",
-    tiles = {"default_steel.png"},
+    tiles = {"default_mese.png"},
     groups = {cracky = 3}
 })

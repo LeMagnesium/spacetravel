@@ -148,28 +148,29 @@ minetest.register_node("default:amber_diffuser", {
 })
 
 minetest.register_node("default:amber", {
-    description = "Amber block",
-    drawtype = "glasslike",
-    tiles = {"default_amber.png"},
-    use_texture_alpha = true,
-    paramtype = "light",
-    post_effect_color = {a = 150, r = 230, g = 137, b = 9},
-    alpha = 120,
+	description = "Amber block",
+	drawtype = "glasslike",
+	tiles = {"default_amber.png"},
+	use_texture_alpha = true,
+	paramtype = "light",
+	post_effect_color = {a = 150, r = 230, g = 137, b = 9},
+	alpha = 120,
+	groups = {amber = 3},
 })
 
 -- x. Unsorted
 minetest.register_node("default:steel", {
-    description = "Steel",
-    drawtype = "nodebox",
-    paramtype = "light",
-    node_box = {
-        type = "fixed",
-        fixed = {
-            {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-        },
-    },
-    tiles = {"default_steel.png"},
-    groups = {cracky=3,level=1},
+	description = "Steel",
+	drawtype = "nodebox",
+	paramtype = "light",
+	node_box = {
+	type = "fixed",
+	fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		},
+	},
+	tiles = {"default_steel.png"},
+	groups = {cracky=3,level=1},
 })
 
 minetest.register_node("default:stairs", {
