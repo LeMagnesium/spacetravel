@@ -16,7 +16,15 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 		minetest.after(1, worldedit.sphere, pos, radius, "default:asteroid_core", false)
 		minetest.after(1.5, worldedit.sphere, pos, radius+1, "default:asteroid_surface", true)
 		minetest.log("action", "Generated asteroid at " .. minetest.pos_to_string(pos))
+	elseif ps == 3 then
+		local pos = {x = math.random(minp.x, maxp.x), y = math.random(minp.y, maxp.y), z = math.random(minp.z, maxp.z)}
+		local radius = math.random(40,130)
+		minetest.set_node(pos, {name = "default:planet"})
+		minetest.after(1, worldedit.sphere, pos, radius, "default:planet_core", false)
+		minetest.after(1.5, worldedit.sphere, pos, radius+1, "default:planet_surface", true)
+		minetest.log("action", "Generated planet at " .. minetest.pos_to_string(pos))
 	end
+		
 
 	-- Generates first node at (0,0,0)
 	if (minp.x <= 0 and maxp.x >= 0) and

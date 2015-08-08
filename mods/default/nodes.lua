@@ -155,7 +155,7 @@ minetest.register_node("default:amber", {
 	paramtype = "light",
 	post_effect_color = {a = 150, r = 230, g = 137, b = 9},
 	alpha = 120,
-	groups = {amber = 3},
+	groups = {amber = 1},
 })
 
 -- x. Unsorted
@@ -207,7 +207,7 @@ minetest.register_node("default:light", {
     light_source = 14,
 })
 
--- Planets
+-- Asteroids and Planets
 
 minetest.register_node("default:asteroid_core", {
 	description = "Core of a asteroid",
@@ -226,3 +226,21 @@ minetest.register_node("default:asteroid", {
 	tiles = {"default_asteroid.png"},
 })
 
+
+minetest.register_node("default:planet", {
+	decription = "Planet",
+	tiles = {"default_planet.png"},
+	groups = {planet = 2},
+})
+
+minetest.register_node("default:planet_core", {
+	decription = "Planet Core",
+	tiles = {"default_planet_core.png"},
+	groups = {planet = 2},
+})
+
+minetest.register_node("default:planet_surface", {
+	decription = "Planet_surface",
+	tiles = {"default_planet_surface.png"},
+	groups = {planet = 3},
+})
