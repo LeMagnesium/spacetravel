@@ -7,8 +7,6 @@
  - `default_duranium.png`
  - `default_light.png`)
  - `default_tritanium.png`
- - `header.png`
- - `icon.png`
 
 ### Ataron (CC BY-NC-SA)
  - `default_glass_default.png`
@@ -22,6 +20,9 @@
  - `default_asteroid.png`
  - `default_asteroid_surface.png`
  - `default_asteroid_core.png`
+ - `background.png`
+ - `icon.png`
+ - `header.png`
 
 ### Others (thanks too)
  - `default_glass.png` by Calinou (CC BY-SA)
