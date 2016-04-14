@@ -7,6 +7,9 @@
     - default:duranium
     - default:tritanium
 
+2. Terrains
+    - default:dirt
+
 3. Miscellaneous
     - default:platform
     - default:platform_border
@@ -47,6 +50,13 @@ minetest.register_node("default:tritanium", {
     },
     tiles = {"default_tritanium.png"},
     groups = {cracky=3,level=1},
+})
+
+-- 2. Terrains
+minetest.register_node("default:dirt", {
+	description = "Dirt",
+	tiles = {"default_dirt.png"},
+	groups = {crumbly = 1}
 })
 
 

@@ -13,6 +13,7 @@ default.LIGHT_MAX = 14
 dofile(minetest.get_modpath("default").."/compatibility.lua")
 dofile(minetest.get_modpath("default").."/functions.lua")
 dofile(minetest.get_modpath("default").."/nodes.lua")
+dofile(minetest.get_modpath("default").."/craftitems.lua")
 dofile(minetest.get_modpath("default").."/mapgen.lua")
 dofile(minetest.get_modpath("default").."/player.lua")
 dofile(minetest.get_modpath("default").."/crafting.lua")

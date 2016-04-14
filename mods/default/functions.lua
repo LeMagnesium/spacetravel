@@ -35,3 +35,19 @@ function lethal_amber()
 end
 
 minetest.after(0, lethal_amber)
+
+-- Builds a planet
+function default.planet_build(pos, node, average, layer)
+	for x = -layer, layer do
+		for z = -layer, layer do
+			local npos = {x = pos.x + x, y = pos.y, z = pos.z + z}
+			local p = vector.subtract(npos, pos)
+			if layer-1 <= p.x and p.x <= layer+1 and layer-1 <= p.y and p.y <= layer+1 and layer-1 <= p.z and p.z <= layer+1 then
+				minetest.set_node(npos, {name = node})
+			end
+		end
+	end
+	if math.random(0, layer) < average then
+		default.planet_build(pos, node, average, layer+1)
+	end
+end
